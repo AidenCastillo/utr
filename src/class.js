@@ -24,7 +24,7 @@ class UTR {
       .then((data) => console.log(data));
   }
 
-  getPlayers(player_id) {
+  getPlayer(player_id) {
     // Get Player
     console.log("Getting Player");
     const url = this.auth_url + `/v1/player/${player_id}`;
