@@ -1,0 +1,23 @@
+{
+  "name": "utr",
+  "version": "1.0.0",
+  "description": "A UTR API Javascript library with methods of interacting with UTR system to retrieve data about Player, Clubs, and Tournaments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "module",
+    "url": "git+https://github.com/AidenCastillo/utr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AidenCastillo/utr/issues"
+  },
+  "homepage": "https://github.com/AidenCastillo/utr#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
