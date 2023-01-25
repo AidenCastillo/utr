@@ -1,8 +1,9 @@
 {
   "name": "utrjs",
   "version": "0.1.0",
+  "type": "module",
   "description": "A UTR API Javascript library with methods of interacting with UTR system to retrieve data about Player, Clubs, and Tournaments.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest"
   },
@@ -18,7 +19,8 @@
   },
   "homepage": "https://github.com/AidenCastillo/utr#readme",
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "node-fetch": "^3.3.0"
   },
   "devDependencies": {
     "jest": "^29.4.0"

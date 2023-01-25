@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 class UTR {
   constructor(email, password) {
     this.email = email;
@@ -85,4 +86,4 @@ class UTR {
   }
 }
 
-module.exports = { UTR };
+export default UTR;

@@ -1,11 +1,8 @@
-const { UTR } = require("./class.js");
-require("dotenv").config();
+import UTR from "./class.js";
+import dotenv from "dotenv";
 
-function main() {
-  const Utr = new UTR(process.env.EMAIL, process.env.PASSWORD);
-  Utr.login();
-}
+const utr = new UTR(process.env.email, process.env.password);
 
-if (require.main === module) {
-  main();
+export {
+  utr as default
 }
