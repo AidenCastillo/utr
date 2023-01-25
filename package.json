@@ -4,7 +4,7 @@
   "description": "A UTR API Javascript library with methods of interacting with UTR system to retrieve data about Player, Clubs, and Tournaments.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "module",
