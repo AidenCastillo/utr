@@ -5,38 +5,83 @@ class UTR {
     this.url = "https://api.universaltennis.com";
     this.auth_url = "https://app.universaltennis.com/api";
   }
-  login() {
+  async login() {
     // Login to UTR
     console.log("Logging in");
     const url = this.auth_url + "/v1/auth/login";
-    fetch(url, {
-      method: "POST",
-
-      body: JSON.stringify({
-        email: this.email,
-        password: this.password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  getPlayer(player_id) {
+  async getPlayer(player_id) {
     // Get Player
     console.log("Getting Player");
     const url = this.auth_url + `/v1/player/${player_id}`;
     console.log(url);
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async searchPlayer(query, top = 10) {
+    // Search for a player
+    console.log("Searching for a player");
+    query = query.replace(" ", "%20");
+    const url = this.auth_url + `/v2/search/players?query=${query}`;
+    console.log(url);
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async getResult(player_id, top = 10) {
+    // Get Player Results
+    console.log("Getting Player Results");
+    const url = this.auth_url + `/v1/player/${player_id}/results`;
+    console.log(url);
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 
