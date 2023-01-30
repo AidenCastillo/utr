@@ -1,12 +1,10 @@
 import fetch from "node-fetch";
 class UTR {
-  constructor(email, password) {
-    this.email = email;
-    this.password = password;
+  constructor() {
     this.url = "https://api.universaltennis.com";
     this.auth_url = "https://app.universaltennis.com/api";
   }
-  async login() {
+  async login(email, password) {
     // Login to UTR
     console.log("Logging in");
     const url = this.auth_url + "/v1/auth/login";
@@ -14,8 +12,8 @@ class UTR {
       const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify({
-          email: this.email,
-          password: this.password,
+          email: email,
+          password: password,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +64,7 @@ class UTR {
       console.error(error);
     }
   }
-  async getResult(player_id, top = 10) {
+  async getResults(player_id, top = 10) {
     // Get Player Results
     console.log("Getting Player Results");
     const url = this.auth_url + `/v1/player/${player_id}/results`;
