@@ -1,8 +1,9 @@
 import UTR from "./class.js";
-import dotenv from "dotenv";
+import { convertToScore } from "./conversion.js";
 
-const utr = new UTR(process.env.email, process.env.password);
+const utr = new UTR();
 
 export {
-  utr as default
+  utr as default,
+  convertToScore
 }

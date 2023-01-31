@@ -2,64 +2,77 @@ import UTR from "./class.js";
 
 const utr = new UTR();
 
+/**
+ * It takes the raw json data and converts it into a more readable format
+ * @param data - the raw json data from the API
+ * @returns An array of objects. Each object represents a tournament. Each tournament has a name, id,
+ * and results. Results is an object that contains the round and the score.
+ */
 function convertToScore(data) {
-  // Convert raw json to score
   const scores = [];
   for (let event in data["events"]) {
-		scores[event] = {};
-		scores[event]["name"] = data["events"][event]["name"];
-    for (let result in data["events"][event]["draws"]) {
-      // console.log(results["events"][event]["draws"][result]["results"]);
-			// scores[event][result] = {};
-			scores[event]["results"] = {};
-			
+    scores[event] = {
+      name: data["events"][event]["name"],
+      id: data["events"][event]["id"],
+    };
+    for (let draw in data["events"][event]["draws"]) {
+      scores[event]["results"] = {};
 
-      for (let match in data["events"][event]["draws"][result]["results"]) {
-        const players = data["events"][event]["draws"][result]["results"][match]["players"]
+      for (let match in data["events"][event]["draws"][draw]["results"]) {
+        const matchData =
+          data["events"][event]["draws"][draw]["results"][match];
+        const players = matchData["players"];
         var round = null;
-        // console.log(players);
+
         try {
-          round = data["events"][event]["draws"][result]["results"][match]["round"]["name"];
-          scores[event]['results'][round] = {};
+          round = matchData["round"]["name"];
         } catch {
           round = "no round";
-          scores[event]['results'][round] = {}; 
         }
-        const score = data["events"][event]["draws"][result]["results"][match]["score"];
-        scores[event]["results"][round]["score"] = score;
+        const score = matchData["score"];
+
+        scores[event]["results"][round] = {
+          score: score,
+          date: matchData["date"],
+        };
+
         try {
           scores[event]["results"][round]["players"] = {
-            "winner1": {
-              "firstName": players["winner1"]["firstName"],
-              "lastName": players["winner1"]["lastName"],
+            winner1: {
+              firstName: players["winner1"]["firstName"],
+              lastName: players["winner1"]["lastName"],
+              doublesUtr: players["winner1"]["doublesUtr"],
             },
-            "winner2": {
-              "firstName": players["winner2"]["firstName"],
-              "lastName": players["winner2"]["lastName"],
+            winner2: {
+              firstName: players["winner2"]["firstName"],
+              lastName: players["winner2"]["lastName"],
+              doublesUtr: players["winner2"]["doublesUtr"],
             },
-            "loser1": {
-              "firstName": players["loser1"]["firstName"],
-              "lastName": players["loser1"]["lastName"],
+            loser1: {
+              firstName: players["loser1"]["firstName"],
+              lastName: players["loser1"]["lastName"],
+              doublesUtr: players["loser1"]["doublesUtr"],
             },
-            "loser2": {
-              "firstName": players["loser2"]["firstName"],
-              "lastName": players["loser2"]["lastName"],
-            }
+            loser2: {
+              firstName: players["loser2"]["firstName"],
+              lastName: players["loser2"]["lastName"],
+              doublesUtr: players["loser2"]["doublesUtr"],
+            },
           };
-
         } catch {
           scores[event]["results"][round]["players"] = {
-            "winner1": {
-              "firstName": players["winner1"]["firstName"],
-              "lastName": players["winner1"]["lastName"],
+            winner1: {
+              firstName: players["winner1"]["firstName"],
+              lastName: players["winner1"]["lastName"],
+              singlesUtr: players["winner1"]["singlesUtr"],
             },
-            "loser1": {
-              "firstName": players["loser1"]["firstName"],
-              "lastName": players["loser1"]["lastName"],
-            }
+            loser1: {
+              firstName: players["loser1"]["firstName"],
+              lastName: players["loser1"]["lastName"],
+              singlesUtr: players["loser1"]["singlesUtr"],
+            },
           };
         }
-        
       }
     }
   }
