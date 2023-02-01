@@ -1,5 +1,4 @@
-import utr from "../src/index.js";
-import { convertToScore } from "../src/index.js";
+import * as utr from "../src/index";
 
 test("UTR class", () => {
   expect(utr).toBeDefined();
@@ -13,5 +12,5 @@ test("UTR class function", () => {
 });
 
 test("convertToScore function", () => {
-  expect(convertToScore).toBeDefined();
+  expect(utr.convertToScore).toBeDefined();
 });
