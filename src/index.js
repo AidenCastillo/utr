@@ -1,4 +1,4 @@
-import { login, getPlayer, searchPlayer, getResults} from "./class.js";
+import { login, getPlayer, searchPlayer, getEvent,getResults} from "./class.js";
 import { convertToScore } from "./conversion.js";
 
 
@@ -7,5 +7,6 @@ export {
   getPlayer,
   searchPlayer,
   getResults,
+  getEvent,
   convertToScore
 }

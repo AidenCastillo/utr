@@ -77,6 +77,23 @@ async function searchPlayer(query, top = 10) {
     console.error(error);
   }
 }
+async function getEvent(eventID) {
+  console.log("Getting Event");
+  const url = auth_url + `/v1/tms/events/${eventID}`;
+  
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch {
+    console.error(error);
+  }
+} 
 
 /**
  * It takes a player_id and a top number and returns the top number of results for that player.
@@ -106,5 +123,6 @@ export {
   login,
   getPlayer,
   searchPlayer,
+  getEvent,
   getResults,
 };
