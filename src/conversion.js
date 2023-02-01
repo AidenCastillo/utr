@@ -1,7 +1,3 @@
-import UTR from "./class.js";
-
-const utr = new UTR();
-
 /**
  * It takes the raw json data and converts it into a more readable format
  * @param data - the raw json data from the API

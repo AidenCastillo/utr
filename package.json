@@ -1,6 +1,6 @@
 {
   "name": "utrjs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "description": "A UTR API Javascript library with methods of interacting with UTR system to retrieve data about Player, Clubs, and Tournaments.",
   "main": "src/index.js",
