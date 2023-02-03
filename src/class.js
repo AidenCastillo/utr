@@ -118,6 +118,23 @@ async function getResults(player_id, top = 10) {
     console.error(error);
   }
 }
+async function getClub(user_id) {
+  console.log("Getting Club");
+  const url = auth_url + `/v1/player/${user_id}/clubs`;
+  
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch {
+    console.error(error);
+  }
+}
 
 export {
   login,
