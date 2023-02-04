@@ -118,6 +118,11 @@ async function getResults(player_id, top = 10) {
     console.error(error);
   }
 }
+/**
+ * This function takes in a user_id and returns the club information of the user
+ * @param user_id - The user's ID.
+ * @returns The data is being returned.
+ */
 async function getClub(user_id) {
   console.log("Getting Club");
   const url = auth_url + `/v1/player/${user_id}/clubs`;
